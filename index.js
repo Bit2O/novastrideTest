@@ -7,6 +7,7 @@ const getAllUsers = require("./users/getAllUsers")
 const createUser = require("./users/createUser")
 
 const getAllProducts = require("./products/getAllProducts")
+const createProducts = require("./products/createProducts")
 const authMiddleware = require("./Helpers/authMiddleware")
 
 // call the packages we need
@@ -44,7 +45,7 @@ router.route('/user')
 
 router.route('/products')
     .get(authMiddleware, getAllProducts)
-//     .post(createProduct)
+    .post(authMiddleware, createProducts)
 // router.route('/products/:id')
 //     .get(getProductOnId)
 //     .put(updateProduct)
