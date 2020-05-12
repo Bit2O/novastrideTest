@@ -17,13 +17,13 @@ function validateJWT(jwtwithsecret) {
 
     let userObject;
 
-    const token = jwtwithsecret.split(process.env.SALT_PATTERN)[0]
-    const salt = jwtwithsecret.split(process.env.SALT_PATTERN)[1]
+    const token = jwtwithsecret.split(SALT_PATTERN)[0]
+    const salt = jwtwithsecret.split(SALT_PATTERN)[1]
 
     try {
         userObject = jwt.verify(token, salt);
     } catch (err) {
-        throw new TokenException(err)
+        throw err
     }
 
     return userObject;

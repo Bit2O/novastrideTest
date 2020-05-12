@@ -3,6 +3,8 @@
 
 // call the local files needed
 const loginUser = require("./users/loginUser")
+const getAllUsers = require("./users/getAllUsers")
+const authMiddleware = require("./Helpers/authMiddleware")
 
 // call the packages we need
 var express    = require('express');        // call express
@@ -29,8 +31,8 @@ router.get('/', function(req, res) {
 
 router.route('/login').post(loginUser)
 
-// router.route('/user')
-//     .get(getAllUsers)
+router.route('/user')
+    .get(authMiddleware, getAllUsers)
 //     .post(createUser)
 // router.route('/user/:id')
 //     .get(getUserOnId)
