@@ -11,6 +11,8 @@ exports.up = async function(knex) {
 		table.string("first_name").notNullable();
 		table.string("last_name").notNullable();
 		table.integer("phone").unsigned();
+		table.string("scope").notNullable();
+		table.string("password").notNullable();
 	})
 };
 
