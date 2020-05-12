@@ -1,23 +1,20 @@
 const faker = require("faker")
+const passwordHash = require("password-hash")
+
 
 const createFakeUser = () => ({
   user_id: faker.random.uuid(),
-  email: faker.email(),
+  email: faker.internet.email(),
   first_name: faker.name.firstName(),
   last_name: faker.name.lastName(),
   phone: faker.phone.phoneNumber(),
   scope: "create,edit,view",
-  password: "password"
+  password: passwordHash.generate('password')
 })
-exports.seed = function(knex) {
+
+exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
+  const fakeUsers = [];
+  fakeUsers.push(createFakeUser());
+  await knex("users").insert(fakeUsers)
 };

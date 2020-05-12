@@ -5,7 +5,7 @@ exports.up = async function(knex) {
 			.uuid("p_id")
 			.primary();
 		table
-			.string("description")
+			.float("price")
             .notNullable();
         table.integer("size").notNullable();
 	})
