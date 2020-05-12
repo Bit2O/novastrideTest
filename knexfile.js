@@ -3,7 +3,7 @@
 module.exports = {
 
   development: {
-    lient: 'postgresql',
+    client: 'postgresql',
     connection: {
       database: 'novastride',
       user:     'postgres',
