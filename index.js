@@ -8,6 +8,8 @@ const createUser = require("./users/createUser")
 
 const getAllProducts = require("./products/getAllProducts")
 const createProducts = require("./products/createProducts")
+const updateProduct = require("./products/updateProduct")
+
 const authMiddleware = require("./Helpers/authMiddleware")
 
 // call the packages we need
@@ -46,9 +48,9 @@ router.route('/user')
 router.route('/products')
     .get(authMiddleware, getAllProducts)
     .post(authMiddleware, createProducts)
-// router.route('/products/:id')
+router.route('/products/:id')
 //     .get(getProductOnId)
-//     .put(updateProduct)
+    .put(authMiddleware, updateProduct)
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
