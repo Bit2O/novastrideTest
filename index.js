@@ -1,6 +1,9 @@
 // BASE SETUP
 // =============================================================================
 
+// call the local files needed
+const loginUser = require("./users/loginUser")
+
 // call the packages we need
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
@@ -26,20 +29,20 @@ router.get('/', function(req, res) {
 
 router.route('/login').post(loginUser)
 
-router.route('/user')
-    .get(getAllUsers)
-    .post(createUser)
-router.route('/user/:id')
-    .get(getUserOnId)
-    .put(updateUser)
+// router.route('/user')
+//     .get(getAllUsers)
+//     .post(createUser)
+// router.route('/user/:id')
+//     .get(getUserOnId)
+//     .put(updateUser)
 
 
-router.route('/products')
-    .get(getAllProducts)
-    .post(createProduct)
-router.route('/products/:id')
-    .get(getProductOnId)
-    .put(updateProduct)
+// router.route('/products')
+//     .get(getAllProducts)
+//     .post(createProduct)
+// router.route('/products/:id')
+//     .get(getProductOnId)
+//     .put(updateProduct)
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
