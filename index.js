@@ -4,6 +4,7 @@
 // call the local files needed
 const loginUser = require("./users/loginUser")
 const getAllUsers = require("./users/getAllUsers")
+const createUser = require("./users/createUser")
 const authMiddleware = require("./Helpers/authMiddleware")
 
 // call the packages we need
@@ -33,7 +34,7 @@ router.route('/login').post(loginUser)
 
 router.route('/user')
     .get(authMiddleware, getAllUsers)
-//     .post(createUser)
+    .post(authMiddleware, createUser)
 // router.route('/user/:id')
 //     .get(getUserOnId)
 //     .put(updateUser)
